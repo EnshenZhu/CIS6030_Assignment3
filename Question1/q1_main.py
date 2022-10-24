@@ -1,5 +1,5 @@
 import psycopg2
-from configuration import config
+from assets.configuration import config
 
 hostname = "localhost"
 username = "postgres"
@@ -10,15 +10,11 @@ database = "Student_Admission"
 def connection():
     """Try to Connect to the PostgreSQL Server"""
     try:
+        parameters = config()
         # conduct the connection
         print('Connecting to the PostgreSQL database...')
 
-        conn = psycopg2.connect(
-            host=hostname,
-            user=username,
-            password=db_password,
-            dbname=database
-        )
+        conn = psycopg2.connect(**parameters)
         # create a cursor
         cur = conn.cursor()
 

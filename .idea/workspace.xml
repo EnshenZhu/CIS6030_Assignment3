@@ -5,24 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ade9268d-a24e-4181-a1fd-7318d09ea60b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Question2/q2_main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configuration.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/CIS6030_Assignment3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CIS6030_Assignment3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/.idea/Question1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/Admission_Predict.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Question1/Admission_Predict_trimmed.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Question1/q1_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/qtest.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Question1/q1_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Question1/q1_main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,6 +44,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/Guelph_Master/CIS6030 Information System/CIS6030_Assignment/CIS6030_Assignment2/README.md",
     "node.js.detected.package.eslint": "true",
@@ -53,8 +55,8 @@
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="q1_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.q1_main">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="CIS6030_Assignment3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -62,14 +64,52 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="configuration" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CIS6030_Assignment3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/configuration.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="q1_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CIS6030_Assignment3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Question1" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Guelph_Master\CIS6030 Information System\CIS6030_Assignment\CIS6030_Assignment3\Question1\q1_main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Question1/q1_main.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -79,6 +119,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.q1_main" />
+        <item itemvalue="Python.configuration" />
       </list>
     </recent_temporary>
   </component>
@@ -91,7 +132,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666464445413</updated>
       <workItem from="1666464448321" duration="36000" />
-      <workItem from="1666638714727" duration="3211000" />
+      <workItem from="1666638714727" duration="5612000" />
     </task>
     <servers />
   </component>
@@ -113,6 +154,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CIS6030_Assignment3$q1_main.coverage" NAME="q1_main Coverage Results" MODIFIED="1666644323782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Question1" />
     <SUITE FILE_PATH="coverage/CIS6030_Assignment3$main.coverage" NAME="q1_main Coverage Results" MODIFIED="1666640875435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Question1" />
   </component>
 </project>

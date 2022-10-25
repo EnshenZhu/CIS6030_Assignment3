@@ -46,7 +46,7 @@ def shutdown_db(conn, cur):
 
     if conn is not None:
         conn.close()
-        print('Database connection closed.')
+        print('Database disconnected.')
 
 
 def user_prompt(reg_model, X_test, y_test):
@@ -144,14 +144,18 @@ def multiple_variable_linear_regression(cursor):
     reg_model = LinearRegression().fit(X_train, y_train)
 
     score_reg = reg_model.score(X_train, y_train)
-    print()
-    print("Multivariable linear regression training finished.")
-    print("The coefficient of determination is around %.4f" % score_reg)
-    print()
 
     coef_reg = reg_model.coef_
 
     intercept_reg = reg_model.intercept_
+    print()
+    print("Multivariable linear regression training finished.")
+    print("The coefficient of determination is around %.4f" % score_reg)
+
+    print("The linear regression model is y = %f*X1 + %f*X2 + %f*X3 + %f*X4 + %f*X5 + %f*X6 + %f*X7 + %f" % (
+        coef_reg[0], coef_reg[1], coef_reg[2], coef_reg[3], coef_reg[4], coef_reg[5], coef_reg[6], intercept_reg))
+
+    print()
 
     user_prompt(reg_model, X_test, y_test)  # add the interaction with the user
 

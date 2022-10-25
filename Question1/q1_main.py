@@ -1,6 +1,7 @@
 import psycopg2
 from set_env.configuration import config
 
+
 def connection():
     """Try to Connect to the PostgreSQL Server"""
     try:
@@ -43,7 +44,7 @@ def shutdown_db(conn, cur):
 
     if conn is not None:
         conn.close()
-        print('Database connection closed.')
+        print('Database disconnected.')
 
 
 def save_csv_to_db(conn, cursor):

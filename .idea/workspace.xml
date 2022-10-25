@@ -8,8 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Question1/q1_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Question1/q1_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Question2/q2_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Question2/q2_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/set_env/configuration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.ini" beforeDir="false" afterPath="$PROJECT_DIR$/env.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +101,7 @@
       <workItem from="1666638714727" duration="11583000" />
       <workItem from="1666653283010" duration="5732000" />
       <workItem from="1666710000536" duration="1725000" />
-      <workItem from="1666713558504" duration="5585000" />
+      <workItem from="1666713558504" duration="9160000" />
     </task>
     <servers />
   </component>

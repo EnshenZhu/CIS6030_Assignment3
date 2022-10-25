@@ -1,27 +1,27 @@
+import math
+
 import psycopg2
-import numpy as np
 import pandas as pd
+import numpy as np
 import matplotlib
+import time
+import random
+
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-hostname = "localhost"
-username = "postgres"
-db_password = "cis6030"
-database = "Student_Admission"
+from set_env.configuration import config
 
 
 def connection():
-    """Try to Connect to the PostgreSQL Server"""
+    """Try to Connect to the PostgresSQL Server"""
     try:
+        parameters = config()
+
         # conduct the connection
         print('Connecting to the PostgreSQL database...')
-        conn = psycopg2.connect(
-            host=hostname,
-            user=username,
-            password=db_password,
-            dbname=database
-        )
+
+        conn = psycopg2.connect(**parameters)
         # create a cursor
         cur = conn.cursor()
 
@@ -49,19 +49,114 @@ def shutdown_db(conn, cur):
         print('Database connection closed.')
 
 
-def multiple_variable_linear_regression():
-    return None
+def user_prompt(reg_model, X_test, y_test):
+    while True:
+        user_input = int(input(
+            "Press 1 to see a data validation from the test_dataset; 2 to enter your only admission profile and check "
+            "the admission rate; 0 to exit"))
+        if user_input == 0:
+            print("Bye bye!")
+            break
+        elif user_input == 1:
+
+            real_X = X_test.sample()  # get a tested admission profile
+            the_idx = real_X.index.tolist()[0]
+            real_y = y_test.loc[[the_idx]]  # get the corresponded admission rate of the admission profile
+
+            predict_y = reg_model.predict(real_X)[0]
+
+            print()
+            print("The student profile is as follow:")
+
+            print("GRE Score: %d | TOEFL Score: %d | University: %d | SOP: %.1f" % (
+                real_X.iloc[0, 0], real_X.iloc[0, 1], real_X.iloc[0, 2], real_X.iloc[0, 3]))
+
+            print(
+                "LOR: %.1f | CGPA: %.2f | Research: %d" % (real_X.iloc[0, 4], real_X.iloc[0, 5], real_X.iloc[0, 6]))
+
+            print("The predicted admission rate is %.2f" % predict_y)
+            print("The real admission rate is %.2f" % real_y.iloc[0])
+            print()
+
+        elif user_input == 2:
+            gre_score = int(input("Enter GRE score: (the value should be an integer between 0 to 340"))
+
+            toefl_score = int(input("Enter TOEFL score: (the value should be an integer between 0 to 120"))
+
+            university_ranking = float(
+                input("Enter University Rating: (the value should be a float number between 0 to "
+                      "5)"))
+            sop = float(input(
+                "Enter the statement of purpose (the value should be a float "
+                "number between 0 to 5)"))
+
+            lor = float(input(
+                "Enter the letter of recommendation strength (the value should be a float "
+                "number between 0 to 5)"))
+
+            cgpa = float(input(
+                "Enter the undergraduate gpa (the value should be a float "
+                "number between 0 to 10)"))
+
+            research_experience = int(
+                input("Enter the research experience (the value should be binary, either 0 or 1)"))
+
+            input_data = np.array(
+                [gre_score, toefl_score, university_ranking, sop, lor, cgpa, research_experience]).reshape(1, -1)
+
+            admission_predict = reg_model.predict(input_data)[0]
+
+            print("The predicted admission rate is %.2f" % admission_predict)
 
 
-def view_table_content(cursor):
-    """View the table contents"""
-    sql_command3 = '''SELECT * from student;'''
-    cursor.execute(sql_command3)
-    for i in cursor.fetchall():
-        print(i)
+def getData(cursor):
+    sql_command1 = '''
+                    SELECT COLUMN_NAME
+                    FROM INFORMATION_SCHEMA.COLUMNS
+                    WHERE TABLE_NAME = N'student';
+                    '''
+    cursor.execute(sql_command1)
+    column_name = [i[0] for i in cursor.fetchall()]
+
+    sql_command2 = '''SELECT * from student;'''
+    cursor.execute(sql_command2)
+
+    raw_data = cursor.fetchall()
+
+    df = pd.DataFrame(raw_data, columns=column_name)
+    return df
+
+
+def random_dataset_split(input):
+    # RECALL: the column 0 of the original pd.DataFrame is the serial number. We should not put it into the training
+    X = input.iloc[:, 1:8]  # 注意左闭右开
+    y = input.iloc[:, 8]
+
+    # We split the training and testing data with the ratio of 90% vs 10%,
+    # and use the current time as the seed for the random splitting
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=int(time.time()))
+    return X_train, X_test, y_train, y_test
+
+
+def multiple_variable_linear_regression(cursor):
+    basic_data = getData(cursor)
+    X_train, X_test, y_train, y_test = random_dataset_split(basic_data)
+    reg_model = LinearRegression().fit(X_train, y_train)
+
+    score_reg = reg_model.score(X_train, y_train)
+    print()
+    print("Multivariable linear regression training finished.")
+    print("The coefficient of determination is around %.4f" % score_reg)
+    print()
+
+    coef_reg = reg_model.coef_
+
+    intercept_reg = reg_model.intercept_
+
+    user_prompt(reg_model, X_test, y_test)  # add the interaction with the user
 
 
 if __name__ == '__main__':
     connection_obj, cursor_obj = connection()
-    multiple_variable_linear_regression()
+    multiple_variable_linear_regression(cursor_obj)
     shutdown_db(connection_obj, cursor_obj)

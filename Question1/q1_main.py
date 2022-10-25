@@ -1,16 +1,11 @@
 import psycopg2
-from assets.configuration import config
-
-hostname = "localhost"
-username = "postgres"
-db_password = "cis6030"
-database = "Student_Admission"
-
+from set_env.configuration import config
 
 def connection():
     """Try to Connect to the PostgreSQL Server"""
     try:
         parameters = config()
+
         # conduct the connection
         print('Connecting to the PostgreSQL database...')
 

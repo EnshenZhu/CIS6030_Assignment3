@@ -46,6 +46,13 @@ def shutdown_db(conn, cur):
         print('Database disconnected.')
 
 
+def status_identify(value):
+    if value == 1:
+        return "Accepted"
+    else:
+        return "Rejected"
+
+
 def user_prompt(reg_model, X_test, y_test):
     while True:
         user_input = int(input(
@@ -58,9 +65,12 @@ def user_prompt(reg_model, X_test, y_test):
 
             real_X = X_test.sample()  # get a tested admission profile
             the_idx = real_X.index.tolist()[0]
-            real_y = y_test.loc[[the_idx]]  # get the corresponded admission rate of the admission profile
+            real_y = y_test.loc[[the_idx]].iloc[0]  # get the corresponded admission rate of the admission profile
+            real_y_rounded = round(real_y)
+            real_admission_status = status_identify(real_y_rounded)
 
-            predict_y = reg_model.predict(real_X)[0]
+            predict_y = reg_model.predict(real_X.values)[0]
+            predict_admission_status = status_identify(predict_y)
 
             print()
             print("The student profile is as follow:")
@@ -71,8 +81,12 @@ def user_prompt(reg_model, X_test, y_test):
             print(
                 "LOR: %.1f | CGPA: %.2f | Research: %d" % (real_X.iloc[0, 4], real_X.iloc[0, 5], real_X.iloc[0, 6]))
 
-            print("The predicted admission rate is %.2f" % predict_y)
-            print("The real admission rate is %.2f" % real_y.iloc[0])
+            print("The predicted admission case with logistic regression is %d. The predicted admission status: %s" % (
+                predict_y, predict_admission_status))
+
+            print("The real admission case is %.2f, which is normalized into %d. The real admission status: %s" % (
+                real_y, real_y_rounded, real_admission_status))
+
             print()
 
         elif user_input == 2:
@@ -102,8 +116,13 @@ def user_prompt(reg_model, X_test, y_test):
                 [gre_score, toefl_score, university_ranking, sop, lor, cgpa, research_experience]).reshape(1, -1)
 
             admission_predict = reg_model.predict(input_data)[0]
+            user_predict_admission_status = status_identify(admission_predict)
 
-            print("The predicted admission rate is %.2f" % admission_predict)
+            print()
+            print(
+                "The predicted admission rate with logistic regression is %d. It predict the admission status is %s." % (
+                    admission_predict, user_predict_admission_status))
+            print()
 
 
 def getData(cursor):
@@ -127,11 +146,7 @@ def getData(cursor):
 def random_dataset_split(input):
     # RECALL: the column 0 of the original pd.DataFrame is the serial number. We should not put it into the training
     X = input.iloc[:, 1:8]  # 注意左闭右开
-
-    """The next step is extremely important"""
-    # Because in logistic regression, the output can only be discrete classes
-    # We normalize the initial decimal output to 0 or 1 by rounding
-    y = round(input.iloc[:, 8])
+    y = input.iloc[:, 8]
 
     # We split the training and testing data with the ratio of 90% vs 10%,
     # and use the current time as the seed for the random splitting
@@ -139,16 +154,18 @@ def random_dataset_split(input):
     return X_train, X_test, y_train, y_test
 
 
-def multiple_variable_linear_regression(cursor):
+def logistic_regression(cursor):
     basic_data = getData(cursor)
     X_train, X_test, y_train, y_test = random_dataset_split(basic_data)
 
-    y_train_normalized,y_test_normalized=round(y_train)
+    """The next step is extremely important"""
+    # Because in logistic regression, the output can only be discrete classes
+    # We normalize the initial decimal output to 0 or 1 by rounding
+    y_train_rounded, y_test_rounded = round(y_train), round(y_test)
 
+    reg_model = LogisticRegression(random_state=0, max_iter=500).fit(X_train.values, y_train_rounded.values)
 
-    reg_model = LogisticRegression(random_state=0, max_iter=500).fit(X_train, y_train)
-
-    score_reg = reg_model.score(X_train, y_train)
+    score_reg = reg_model.score(X_train.values, y_train_rounded.values)
 
     """To DO: Figuring out the meaning of parameters """
 
@@ -169,5 +186,5 @@ def multiple_variable_linear_regression(cursor):
 
 if __name__ == '__main__':
     connection_obj, cursor_obj = connection()
-    multiple_variable_linear_regression(cursor_obj)
+    logistic_regression(cursor_obj)
     shutdown_db(connection_obj, cursor_obj)

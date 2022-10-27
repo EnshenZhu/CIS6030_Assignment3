@@ -58,9 +58,9 @@ def user_prompt(reg_model, X_test, y_test):
 
             real_X = X_test.sample()  # get a tested admission profile
             the_idx = real_X.index.tolist()[0]
-            real_y = y_test.loc[[the_idx]]  # get the corresponded admission rate of the admission profile
+            real_y = y_test.loc[[the_idx]].iloc[0]  # get the corresponded admission rate of the admission profile
 
-            predict_y = reg_model.predict(real_X)[0]
+            predict_y = reg_model.predict(real_X.values)[0]
 
             print()
             print("The student profile is as follow:")
@@ -72,7 +72,7 @@ def user_prompt(reg_model, X_test, y_test):
                 "LOR: %.1f | CGPA: %.2f | Research: %d" % (real_X.iloc[0, 4], real_X.iloc[0, 5], real_X.iloc[0, 6]))
 
             print("The predicted admission rate is %.2f" % predict_y)
-            print("The real admission rate is %.2f" % real_y.iloc[0])
+            print("The real admission rate with linear regression is %.2f" % real_y)
             print()
 
         elif user_input == 2:
@@ -103,7 +103,9 @@ def user_prompt(reg_model, X_test, y_test):
 
             admission_predict = reg_model.predict(input_data)[0]
 
-            print("The predicted admission rate is %.2f" % admission_predict)
+            print()
+            print("The predicted admission rate with linear regression is %.2f" % admission_predict)
+            print()
 
 
 def getData(cursor):
@@ -138,9 +140,9 @@ def random_dataset_split(input):
 def multiple_variable_linear_regression(cursor):
     basic_data = getData(cursor)
     X_train, X_test, y_train, y_test = random_dataset_split(basic_data)
-    reg_model = LinearRegression().fit(X_train, y_train)
+    reg_model = LinearRegression().fit(X_train.values, y_train.values)
 
-    score_reg = reg_model.score(X_train, y_train)
+    score_reg = reg_model.score(X_train.values, y_train.values)
 
     coef_reg = reg_model.coef_
 

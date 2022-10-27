@@ -8,12 +8,12 @@ def config(filename='../env.ini', section='postgresql'):
     parser.read(filename)
 
     # get section, default to postgresql
-    db = {}
+    db_profile = {}
     if parser.has_section(section):
-        params = parser.items(section)
-        for param in params:
-            db[param[0]] = param[1]
+        all_params = parser.items(section)
+        for single_param in all_params:
+            db_profile[single_param[0]] = single_param[1]
     else:
         raise Exception('Section {0} not found in the {1} file'.format(section, filename))
 
-    return db
+    return db_profile

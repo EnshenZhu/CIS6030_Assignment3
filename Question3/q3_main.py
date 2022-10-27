@@ -4,7 +4,7 @@ import numpy as np
 import time
 import random
 
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
 from set_env.configuration import config
@@ -127,7 +127,11 @@ def getData(cursor):
 def random_dataset_split(input):
     # RECALL: the column 0 of the original pd.DataFrame is the serial number. We should not put it into the training
     X = input.iloc[:, 1:8]  # 注意左闭右开
-    y = input.iloc[:, 8]
+
+    """The next step is extremely important"""
+    # Because in logistic regression, the output can only be discrete classes
+    # We normalize the initial decimal output to 0 or 1 by rounding
+    y = round(input.iloc[:, 8])
 
     # We split the training and testing data with the ratio of 90% vs 10%,
     # and use the current time as the seed for the random splitting
@@ -138,19 +142,25 @@ def random_dataset_split(input):
 def multiple_variable_linear_regression(cursor):
     basic_data = getData(cursor)
     X_train, X_test, y_train, y_test = random_dataset_split(basic_data)
-    reg_model = LinearRegression().fit(X_train, y_train)
+
+    y_train_normalized,y_test_normalized=round(y_train)
+
+
+    reg_model = LogisticRegression(random_state=0, max_iter=500).fit(X_train, y_train)
 
     score_reg = reg_model.score(X_train, y_train)
 
-    coef_reg = reg_model.coef_
+    """To DO: Figuring out the meaning of parameters """
 
-    intercept_reg = reg_model.intercept_
+    # coef_reg = reg_model.coef_
+    #
+    # intercept_reg = reg_model.intercept_
     print()
-    print("Multivariable Linear Regression training finished.")
+    print("Logistic Regression training finished.")
     print("The coefficient of determination is around %.4f" % score_reg)
 
-    print("The linear regression model is y = %f*X1 + %f*X2 + %f*X3 + %f*X4 + %f*X5 + %f*X6 + %f*X7 + %f" % (
-        coef_reg[0], coef_reg[1], coef_reg[2], coef_reg[3], coef_reg[4], coef_reg[5], coef_reg[6], intercept_reg))
+    # print("The linear regression model is y = %f*X1 + %f*X2 + %f*X3 + %f*X4 + %f*X5 + %f*X6 + %f*X7 + %f" % (
+    #     coef_reg[0], coef_reg[1], coef_reg[2], coef_reg[3], coef_reg[4], coef_reg[5], coef_reg[6], intercept_reg))
 
     print()
 

@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ade9268d-a24e-4181-a1fd-7318d09ea60b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Question3/q3_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question1/q1_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Question1/q1_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Question2/q2_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Question2/q2_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/set_env/configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/set_env/configuration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +60,9 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Guelph_Master\CIS6030 Information System\CIS6030_Assignment\CIS6030_Assignment3" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Guelph_Master\CIS6030 Information System\CIS6030_Assignment\CIS6030_Assignment3\set_env" />
       <recent name="D:\Guelph_Master\CIS6030 Information System\CIS6030_Assignment\CIS6030_Assignment3\assets" />
@@ -88,6 +91,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="q3_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CIS6030_Assignment3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Question3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Question3/q3_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.q3_main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -101,7 +128,12 @@
       <workItem from="1666638714727" duration="11583000" />
       <workItem from="1666653283010" duration="5732000" />
       <workItem from="1666710000536" duration="1725000" />
-      <workItem from="1666713558504" duration="9160000" />
+      <workItem from="1666713558504" duration="9825000" />
+      <workItem from="1666724917493" duration="137000" />
+      <workItem from="1666726791933" duration="618000" />
+      <workItem from="1666732011762" duration="443000" />
+      <workItem from="1666809955437" duration="60000" />
+      <workItem from="1666832014069" duration="1500000" />
     </task>
     <servers />
   </component>

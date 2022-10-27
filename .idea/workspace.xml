@@ -95,6 +95,9 @@
       <module name="CIS6030_Assignment3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Question2" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -114,6 +117,9 @@
       <module name="CIS6030_Assignment3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Question3" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -153,7 +159,7 @@
       <workItem from="1666726791933" duration="618000" />
       <workItem from="1666732011762" duration="443000" />
       <workItem from="1666809955437" duration="60000" />
-      <workItem from="1666832014069" duration="6129000" />
+      <workItem from="1666832014069" duration="6178000" />
     </task>
     <servers />
   </component>

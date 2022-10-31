@@ -66,9 +66,10 @@
 1. All related code are inside the Question 2 folder.
 2. This script is going to do the LinearRegression in regard to the date from the "Admission_Prediction.csv" file.
    However, the script withdraw the data from the PostgresSQL rather than the original csv file.
-3. This script splits the original dataset into the training and testing data. **It randomly takes 90% of the original
+3. You may run this script by entering the ```python q2_main``` inside the terminal.
+4. This script splits the original dataset into the training and testing data. **It randomly takes 90% of the original
    dataset into the training data, and the rest 10% into the testing data**.
-4. When starting the script, the output will briefly report the training status as follows:
+5. When starting the script, the output will briefly report the training status as follows:
    ```
    Connecting to the PostgreSQL database...
    PostgreSQL database version:
@@ -86,13 +87,16 @@
    ```
    Since 0.8285 is a relatively high value in terms of 1; we assume that the trained multivariable linear regression
    model may have a high performance on predicting the output.
-5. The program will also prompt the user to either **do the performance validation** of the trained model, or enter
+6. The program will also prompt the user to either **do the performance validation** of the trained model, or enter
    their own data to predict the admission rate.
    ```
    Press 1 to see a data validation from the test_dataset; 
-   2 to enter your only admission profile and check the admission rate; 0 to exit
+   Press 2 to see the overall performance of the linear regression model 
+   on all test dataset; 
+   Press 3 to enter your only admission profile and check the admission rate; 
+   Press 0 to exit
    ```
-6. When pressing 1, the script will do the performance validation of the trained model, which randomly pick a row of
+7. When pressing 1, the script will do the performance validation of the trained model, which randomly pick a row of
    data from the testing dataset, and compares **the real admission rate and the predicted admission
    rate**. For example:
    ```
@@ -102,8 +106,22 @@
    The predicted admission rate is 0.76
    The real admission rate is 0.74
    ```
-7. When pressing 2, the script will take the user input and predict the admission rate. For example, if we enter the
-   folllowing information
+8. When pressing 2, the script will check the overall performance of the linear regression model
+   on all test dataset. Specifically, it will report the **Coefficient of determination** and the **Mean Square Error**
+   between the predicted_y and the real_y inside the testing dataset.
+   ```
+   By evaluating the linear regression model on all test dataset
+   The R^2 score between the real y_test and the predict y_test is 0.8117
+   The Mean Square Error between the real y_test and the predict y_test is 0.0033
+   ```
+
+   Accordingly, the R^2 score is around 0.8117, which means the predicted_y and the real_y are highly positively linear
+   correlated. Besides, the Mean_Square_Error is around 0.0033, which indicates that the predict_y and the real_y have
+   very small error differences. **Overall, the linear regression model has a highly precise performance on the testing
+   dataset.**
+
+9. When pressing 3, the script will take the user input and predict the admission rate. For example, if we enter the
+   following information
    ```
    Enter GRE score: (the value should be an integer between 0 to 340>? 320
    Enter TOEFL score: (the value should be an integer between 0 to 120>? 110
@@ -117,11 +135,11 @@
    ```
    The predicted admission rate is 0.76
    ```
-8. Press 0 to exit the script.
-   ```
-   Bye bye!
-   Database disconnected.
-   ```
+10. Press 0 to exit the script.
+    ```
+    Bye bye!
+    Database disconnected.
+    ```
 
 ****
 
@@ -135,10 +153,11 @@ means admission ACCEPTED. !!!**
 1. All related code are inside the Question 3 folder.
 2. The following contents will be quite similar to the question 2. However, critical difference should be aware.
 3. This script is going to do the LogisticRegression in regard to the date from the "Admission_Prediction.csv" file.
+4. You may run this script by entering the ```python q3_main``` inside the terminal.
    However, the script withdraw the data from the PostgresSQL rather than the original csv file.
-4. This script splits the original dataset into the training and testing data. **It randomly takes 90% of the original
+5. This script splits the original dataset into the training and testing data. **It randomly takes 90% of the original
    dataset into the training data, and the rest 10% into the testing data**.
-5. When starting the script, the output will briefly report the training status as follows:
+6. When starting the script, the output will briefly report the training status as follows:
    ```
    Connecting to the PostgreSQL database...
    PostgreSQL database version:
@@ -172,7 +191,7 @@ means admission ACCEPTED. !!!**
    their own data to predict the admission rate.
    ```
    Press 1 to see a data validation from the test_dataset; 
-   2 to enter your only admission profile and check the admission rate; 0 to exit
+   3 to enter your only admission profile and check the admission rate; 0 to exit
    ```
 7. When pressing 1, the script will do the performance validation of the trained model, which randomly pick a row of
    data from the testing dataset, and compares **the real admission case and the predicted admission
@@ -184,7 +203,7 @@ means admission ACCEPTED. !!!**
    The predicted admission case with logistic regression is 1. The predicted admission status: Accepted
    The real admission case is 0.84, which is normalized into 1. The real admission status: Accepted
    ```
-8. When pressing 2, the script will take the user input and predict the admission case. For example, if we enter the
+8. When pressing 3, the script will take the user input and predict the admission case. For example, if we enter the
    folllowing information
    ```
    Enter GRE score: (the value should be an integer between 0 to 340>? 300

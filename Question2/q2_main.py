@@ -5,6 +5,7 @@ import time
 import random
 
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.model_selection import train_test_split
 
 from set_env.configuration import config
@@ -49,8 +50,9 @@ def shutdown_db(conn, cur):
 def user_prompt(reg_model, X_test, y_test):
     while True:
         user_input = int(input(
-            "Press 1 to see a data validation from the test_dataset; 2 to enter your only admission profile and check "
-            "the admission rate; 0 to exit"))
+            "Press 1 to see a data validation from the test_dataset; Press 2 to see the overall performance of the "
+            "linear regression model on all test dataset; Press 3 to enter your only admission profile and check the "
+            "admission rate; Press 0 to exit"))
         if user_input == 0:
             print("Bye bye!")
             break
@@ -76,6 +78,17 @@ def user_prompt(reg_model, X_test, y_test):
             print()
 
         elif user_input == 2:
+            """to do"""
+            y_test_predict = reg_model.predict(X_test.values)
+            r2_value = r2_score(y_test.values, y_test_predict)
+            MSR = mean_squared_error(y_test.values, y_test_predict)
+            print()
+            print("By evaluating the linear regression model on all test dataset")
+            print("The R^2 score between the real y_test and the predict y_test is %.4f" % r2_value)
+            print("The Mean Square Error between the real y_test and the predict y_test is %.4f" % MSR)
+            print()
+
+        elif user_input == 3:
             gre_score = int(input("Enter GRE score: (the value should be an integer between 0 to 340"))
 
             toefl_score = int(input("Enter TOEFL score: (the value should be an integer between 0 to 120"))

@@ -25,7 +25,7 @@
 ### Question 1
 
 1. All related code are inside the Question 1 folder.
-2. Before start, please place the dataset file into the folder and **rename it as the "Admission_Predict_trimmed"**.
+2. Before start, please place the dataset file into the folder and **rename it as the "Admission_Predict_trimmed.csv"**.
    Please make sure the
    dataset is **explicitly trimmed**, by which the last three lines, which contains the max and min value information,
    should be

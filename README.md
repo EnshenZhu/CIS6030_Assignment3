@@ -246,3 +246,9 @@ means admission ACCEPTED. !!!**
     Bye bye!
     Database disconnected.
     ```
+    
+### Reference
+1. https://www.postgresqltutorial.com/postgresql-python/connect/
+2. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
+3. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+4. https://stackoverflow.com/questions/35572000/how-can-i-plot-a-confusion-matrix

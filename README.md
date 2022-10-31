@@ -66,7 +66,7 @@
 1. All related code are inside the Question 2 folder.
 2. This script is going to do the LinearRegression in regard to the date from the "Admission_Prediction.csv" file.
    However, the script withdraw the data from the PostgresSQL rather than the original csv file.
-3. You may run this script by entering the ```python q2_main``` inside the terminal.
+3. You may run this script by entering the ```python q2_main.py``` inside the terminal.
 4. This script splits the original dataset into the training and testing data. **It randomly takes 90% of the original
    dataset into the training data, and the rest 10% into the testing data**.
 5. When starting the script, the output will briefly report the training status as follows:
@@ -91,9 +91,12 @@
    their own data to predict the admission rate.
    ```
    Press 1 to see a data validation from the test_dataset; 
-   Press 2 to see the overall performance of the linear regression model 
+   
+   Press 2 to check the overall performance of the linear regression model 
    on all test dataset; 
+   
    Press 3 to enter your only admission profile and check the admission rate; 
+   
    Press 0 to exit
    ```
 7. When pressing 1, the script will do the performance validation of the trained model, which randomly pick a row of
@@ -153,7 +156,7 @@ means admission ACCEPTED. !!!**
 1. All related code are inside the Question 3 folder.
 2. The following contents will be quite similar to the question 2. However, critical difference should be aware.
 3. This script is going to do the LogisticRegression in regard to the date from the "Admission_Prediction.csv" file.
-4. You may run this script by entering the ```python q3_main``` inside the terminal.
+4. You may run this script by entering the ```python q3_main.py``` inside the terminal.
    However, the script withdraw the data from the PostgresSQL rather than the original csv file.
 5. This script splits the original dataset into the training and testing data. **It randomly takes 90% of the original
    dataset into the training data, and the rest 10% into the testing data**.
@@ -164,36 +167,32 @@ means admission ACCEPTED. !!!**
    ('PostgreSQL 15.0, compiled by Visual C++ build 1914, 64-bit',)
    Logistic Regression training finished.
    ```
+7. Besides, it will report the property of the logistic regression
+   ```
+   The coefficient of determination is around 0.9444
+   The interception is around -45.4342
+   Column 0 has the coefficient around 0.0547
+   Column 1 has the coefficient around 0.1095
+   Column 2 has the coefficient around -0.1058
+   Column 3 has the coefficient around -0.2197
+   Column 4 has the coefficient around 0.8525
+   Column 5 has the coefficient around 2.2423
+   Column 6 has the coefficient around -0.1170
+   ```
 
-[//]: # (   Besides, it will report the numerical model of the linear regression:)
-
-[//]: # (   ```)
-
-[//]: # (   The linear regression model is y = 0.002127*X1 + 0.002555*X2 )
-
-[//]: # (   + 0.007459*X3 + -0.000584*X4 + 0.018436*X5 + 0.114668*X6 + 0.027368*X7 + -1.310231)
-
-[//]: # (   ```)
-
-[//]: # (   It will also report the coefficient of determination:)
-
-[//]: # (   ```)
-
-[//]: # (   The coefficient of determination is around 0.8285)
-
-[//]: # (   ```)
-
-[//]: # (   Since 0.8285 is a relatively high value in terms of 1; we assume that the trained multivariable linear regression)
-
-[//]: # (   model may have a high performance on predicting the output.)
-
-6. The program will also prompt the user to either **do the performance validation** of the trained model, or enter
+8. The program will also prompt the user to either **do the performance validation** of the trained model, or enter
    their own data to predict the admission rate.
    ```
    Press 1 to see a data validation from the test_dataset; 
-   3 to enter your only admission profile and check the admission rate; 0 to exit
+   
+   Press 2 to check the overall performance (with a confusion matrix) 
+   of the logistic regression model on the test dataset. 
+   
+   Press 3 to enter your only admission profile and check the admission rate; 
+   
+   Press 0 to exit
    ```
-7. When pressing 1, the script will do the performance validation of the trained model, which randomly pick a row of
+9. When pressing 1, the script will do the performance validation of the trained model, which randomly pick a row of
    data from the testing dataset, and compares **the real admission case and the predicted admission
    case**. For example:
    ```
@@ -203,8 +202,30 @@ means admission ACCEPTED. !!!**
    The predicted admission case with logistic regression is 1. The predicted admission status: Accepted
    The real admission case is 0.84, which is normalized into 1. The real admission status: Accepted
    ```
-8. When pressing 3, the script will take the user input and predict the admission case. For example, if we enter the
-   folllowing information
+
+10. When pressing 2, the script will report the overall performance (with a confusion matrix) of the logistic regression
+    model on the test dataset. It will summarize the accuracy rate between the predicted admission status and the real
+    admission status.
+    ```
+    By evaluating the logistic regression model on all test dataset
+    The accuracy of the model is 96.00 percents
+    ```
+11. Moreover, the script will generate the **Confusion Matrix** between the predicted and the real case among the test
+    dataset. **(If the confusion matrix cannot properly display here, please find the original image at "
+    ./Question3/confusion_matrix.png")**
+
+    <img src="Question3/confusion_matrix.png">
+
+    The confusion matrix indicates that for all 50 test cases
+    * 47 cases are both "Predicted Accepted" and "Actually Accepted"
+    * 2 cases are "Predicted Accepted" but "Actually Rejected"
+    * 0 cases are "Predicted Rejected" but "Actually Accepted"
+    * 1 case is both "Predicted Rejected" but "Actually Rejected"
+
+    Therefore, the logistic regression does have a good performance on the test dataset.
+
+12. When pressing 3, the script will take the user input and predict the admission case. For example, if we enter the
+    following information
    ```
    Enter GRE score: (the value should be an integer between 0 to 340>? 300
    Enter TOEFL score: (the value should be an integer between 0 to 120>? 98
@@ -214,11 +235,13 @@ means admission ACCEPTED. !!!**
    Enter the undergraduate gpa (the value should be a float number between 0 to 10)>? 5.5
    Enter the research experience (the value should be binary, either 0 or 1)>? 0
    ```
+
    The output predicted admission rate with Logistic Regression is:
    ```
    The predicted admission rate with logistic regression is 0. It predict the admission status is Rejected.
    ```
-9. Press 0 to exit the script.
+   
+13. Press 0 to exit the script.
    ```
    Bye bye!
    Database disconnected.

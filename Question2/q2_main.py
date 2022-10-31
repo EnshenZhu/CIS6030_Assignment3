@@ -50,7 +50,7 @@ def shutdown_db(conn, cur):
 def user_prompt(reg_model, X_test, y_test):
     while True:
         user_input = int(input(
-            "Press 1 to see a data validation from the test_dataset; Press 2 to see the overall performance of the "
+            "Press 1 to see a data validation from the test_dataset; Press 2 to check the overall performance of the "
             "linear regression model on all test dataset; Press 3 to enter your only admission profile and check the "
             "admission rate; Press 0 to exit"))
         if user_input == 0:

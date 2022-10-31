@@ -2,9 +2,11 @@ import psycopg2
 import pandas as pd
 import numpy as np
 import time
-import random
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split
 
 from set_env.configuration import config
@@ -56,12 +58,15 @@ def status_identify(value):
 def user_prompt(reg_model, X_test, y_test):
     while True:
         user_input = int(input(
-            "Press 1 to see a data validation from the test_dataset; 2 to enter your only admission profile and check "
-            "the admission rate; 0 to exit"))
+            "Press 1 to see a data validation from the test_dataset; Press 2 to check the overall performance (with a "
+            "confusion matrix) of the logistic regression model on the test dataset. Press 3 to enter your only "
+            "admission profile and check the admission rate; Press 0 to exit"))
         if user_input == 0:
             print("Bye bye!")
             break
         elif user_input == 1:
+
+            print()
 
             real_X = X_test.sample()  # get a tested admission profile
             the_idx = real_X.index.tolist()[0]
@@ -72,7 +77,6 @@ def user_prompt(reg_model, X_test, y_test):
             predict_y = reg_model.predict(real_X.values)[0]
             predict_admission_status = status_identify(predict_y)
 
-            print()
             print("The student profile is as follow:")
 
             print("GRE Score: %d | TOEFL Score: %d | University: %d | SOP: %.1f" % (
@@ -90,6 +94,26 @@ def user_prompt(reg_model, X_test, y_test):
             print()
 
         elif user_input == 2:
+            print()
+
+            y_test_predicted = reg_model.predict(X_test.values)
+            y_test_round = np.round(y_test.values)
+
+            accuracy = accuracy_score(y_test_round, y_test_predicted) * 100
+            print("By evaluating the logistic regression model on all test dataset")
+            print("The accuracy of the model is %.2f percents" % accuracy)
+
+            c_m = confusion_matrix(y_test_round, y_test_predicted, labels=[1, 0])
+            df_cm = pd.DataFrame(c_m, index=[i for i in ["Actually Accepted", "Actually Rejected"]],
+                                 columns=[i for i in ["Predicted Accepted", "Predicted Rejected"]])
+            plt.figure(figsize=(10, 7))
+            sns.heatmap(df_cm, annot=True, cmap="crest")
+            plt.savefig("confusion_matrix.png")
+            plt.show()
+
+            print()
+
+        elif user_input == 3:
             gre_score = int(input("Enter GRE score: (the value should be an integer between 0 to 340"))
 
             toefl_score = int(input("Enter TOEFL score: (the value should be an integer between 0 to 120"))
@@ -155,6 +179,7 @@ def random_dataset_split(input):
 
 
 def logistic_regression(cursor):
+    print()
     basic_data = getData(cursor)
     X_train, X_test, y_train, y_test = random_dataset_split(basic_data)
 
@@ -164,21 +189,18 @@ def logistic_regression(cursor):
     y_train_rounded, y_test_rounded = round(y_train), round(y_test)
 
     reg_model = LogisticRegression(random_state=0, max_iter=500).fit(X_train.values, y_train_rounded.values)
+    print("Logistic Regression training finished.")
 
     score_reg = reg_model.score(X_train.values, y_train_rounded.values)
-
-    """To DO: Figuring out the coefficient and interception """
-
-    # coef_reg = reg_model.get_params()
-    #
-    # intercept_reg = reg_model.intercept_
-    print()
-    print("Logistic Regression training finished.")
     print("The coefficient of determination is around %.4f" % score_reg)
-    # print("The logistic regression coefficient", coef_reg)
 
-    # print("The linear regression model is y = %f*X1 + %f*X2 + %f*X3 + %f*X4 + %f*X5 + %f*X6 + %f*X7 + %f" % (
-    #     coef_reg[0], coef_reg[1], coef_reg[2], coef_reg[3], coef_reg[4], coef_reg[5], coef_reg[6], intercept_reg))
+    intercept = reg_model.intercept_[0]
+    print("The interception is around %.4f" % intercept)
+
+    coefficient_ls = reg_model.coef_[0]
+
+    for idx, a_coefficient in enumerate(coefficient_ls):
+        print("Column %d has the coefficient around %.4f" % (idx, a_coefficient))
 
     print()
 

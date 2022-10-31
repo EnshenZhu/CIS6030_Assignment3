@@ -167,14 +167,15 @@ def logistic_regression(cursor):
 
     score_reg = reg_model.score(X_train.values, y_train_rounded.values)
 
-    """To DO: Figuring out the meaning of parameters """
+    """To DO: Figuring out the coefficient and interception """
 
-    # coef_reg = reg_model.coef_
+    # coef_reg = reg_model.get_params()
     #
     # intercept_reg = reg_model.intercept_
     print()
     print("Logistic Regression training finished.")
     print("The coefficient of determination is around %.4f" % score_reg)
+    # print("The logistic regression coefficient", coef_reg)
 
     # print("The linear regression model is y = %f*X1 + %f*X2 + %f*X3 + %f*X4 + %f*X5 + %f*X6 + %f*X7 + %f" % (
     #     coef_reg[0], coef_reg[1], coef_reg[2], coef_reg[3], coef_reg[4], coef_reg[5], coef_reg[6], intercept_reg))

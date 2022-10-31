@@ -25,16 +25,23 @@
 ### Question 1
 
 1. All related code are inside the Question 1 folder.
-2. This script is going to save the raw "Admission_Prediction.csv" file into the PostgresSQL server. You may run it by
+2. Before start, please place the dataset file into the folder and **rename it as the "Admission_Predict_trimmed"**.
+   Please make sure the
+   dataset is **explicitly trimmed**, by which the last three lines, which contains the max and min value information,
+   should be
+   removed from the dataset.
+
+3. This script is going to save the raw "Admission_Prediction.csv" file into the PostgresSQL server. You may run it by
    enter ```python q1_main.py``` inside the terminal.
-3. On the first three lines of the output, you may find out the general version information about the PostgresSQL server
+4. On the first three lines of the output, you may find out the general version information about the PostgresSQL server
    used:
    ```
    Connecting to the PostgreSQL database...
    PostgreSQL database version:
    ('PostgreSQL 15.0, compiled by Visual C++ build 1914, 64-bit',)
    ```
-4. The following lines shows the fetch results for all the data inside the created **student** table
+5. (Add the SQL command) The following lines shows the fetch results for all the data inside the created **student**
+   table
    ```
    (1, 337, 118, 4, 4.5, 4.5, 9.65, 1, 0.92)
    (2, 324, 107, 4, 4.0, 4.5, 8.87, 1, 0.76)
@@ -47,7 +54,9 @@
    By which each row shows the **Serial No. | GRE Score | TOEFL Score | University Rating | SOP | LOR | CGPA | Research
    |
    Chance of Admit** in sequence
-5. The final line of output ```Database disconnected.``` indicates that the database has been disconnected
+6. (Optional) You may change to your own SQL command by changing the sql_command3 variable inside the view_table_content
+   function of the q1_main.py
+7. The final line of output ```Database disconnected.``` indicates that the database has been disconnected
    successfully.
 
 ****

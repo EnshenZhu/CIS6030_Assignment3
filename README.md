@@ -242,7 +242,7 @@ means admission ACCEPTED. !!!**
     ```
 
 13. Press 0 to exit the script.
-   ```
-   Bye bye!
-   Database disconnected.
-   ```
+    ```
+    Bye bye!
+    Database disconnected.
+    ```

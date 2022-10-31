@@ -78,8 +78,8 @@
    ```
    Besides, it will report the numerical model of the linear regression:
    ```
-   The linear regression model is y = 0.002127*X1 + 0.002555*X2 
-   + 0.007459*X3 + -0.000584*X4 + 0.018436*X5 + 0.114668*X6 + 0.027368*X7 + -1.310231
+   The linear regression model is y = 0.002127*X0 + 0.002555*X1 
+   + 0.007459*X2 + -0.000584*X3 + 0.018436*X4 + 0.114668*X5 + 0.027368*X6 + -1.310231
    ```
    It will also report the coefficient of determination:
    ```

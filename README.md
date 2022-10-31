@@ -31,7 +31,7 @@
    should be
    removed from the dataset.
 
-3. This script is going to save the raw "Admission_Prediction.csv" file into the PostgresSQL server. You may run it by
+3. This script is going to save the raw "Admission_Predict_trimmed.csv" file into the PostgresSQL server. You may run it by
    enter ```python q1_main.py``` inside the terminal.
 4. On the first three lines of the output, you may find out the general version information about the PostgresSQL server
    used:

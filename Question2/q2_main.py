@@ -164,7 +164,7 @@ def multiple_variable_linear_regression(cursor):
     print("Multivariable Linear Regression training finished.")
     print("The coefficient of determination is around %.4f" % score_reg)
 
-    print("The linear regression model is y = %f*X1 + %f*X2 + %f*X3 + %f*X4 + %f*X5 + %f*X6 + %f*X7 + %f" % (
+    print("The linear regression model is y = %f*X0 + %f*X1 + %f*X2 + %f*X3 + %f*X4 + %f*X5 + %f*X6 + %f" % (
         coef_reg[0], coef_reg[1], coef_reg[2], coef_reg[3], coef_reg[4], coef_reg[5], coef_reg[6], intercept_reg))
 
     print()

@@ -226,21 +226,21 @@ means admission ACCEPTED. !!!**
 
 12. When pressing 3, the script will take the user input and predict the admission case. For example, if we enter the
     following information
-   ```
-   Enter GRE score: (the value should be an integer between 0 to 340>? 300
-   Enter TOEFL score: (the value should be an integer between 0 to 120>? 98
-   Enter University Rating: (the value should be a float number between 0 to 5)>? 3
-   Enter the statement of purpose (the value should be a float number between 0 to 5)>? 3
-   Enter the letter of recommendation strength (the value should be a float number between 0 to 5)>? 1
-   Enter the undergraduate gpa (the value should be a float number between 0 to 10)>? 5.5
-   Enter the research experience (the value should be binary, either 0 or 1)>? 0
-   ```
+       ```
+       Enter GRE score: (the value should be an integer between 0 to 340>? 300
+       Enter TOEFL score: (the value should be an integer between 0 to 120>? 98
+       Enter University Rating: (the value should be a float number between 0 to 5)>? 3
+       Enter the statement of purpose (the value should be a float number between 0 to 5)>? 3
+       Enter the letter of recommendation strength (the value should be a float number between 0 to 5)>? 1
+       Enter the undergraduate gpa (the value should be a float number between 0 to 10)>? 5.5
+       Enter the research experience (the value should be binary, either 0 or 1)>? 0
+       ```
 
-   The output predicted admission rate with Logistic Regression is:
-   ```
-   The predicted admission rate with logistic regression is 0. It predict the admission status is Rejected.
-   ```
-   
+    The output predicted admission rate with Logistic Regression is:
+    ```
+    The predicted admission rate with logistic regression is 0. It predict the admission status is Rejected.
+    ```
+
 13. Press 0 to exit the script.
    ```
    Bye bye!

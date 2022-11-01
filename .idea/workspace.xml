@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ade9268d-a24e-4181-a1fd-7318d09ea60b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CIS6030_Assignment3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CIS6030_Assignment3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CIS6030_Assignment3_EnshenZhu.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme/confusion_matrix.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Submission/Question1/q1_main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Submission/Question2/q2_main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Submission/Question3/confusion_matrix.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Submission/Question3/q3_main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Submission/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Submission/env.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Submission/set_env/configuration.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +140,9 @@
       <workItem from="1667242538768" duration="7938000" />
       <workItem from="1667251103758" duration="79000" />
       <workItem from="1667261659787" duration="1635000" />
-      <workItem from="1667265145056" duration="762000" />
+      <workItem from="1667265145056" duration="796000" />
+      <workItem from="1667266965132" duration="197000" />
+      <workItem from="1667267414867" duration="56000" />
     </task>
     <servers />
   </component>

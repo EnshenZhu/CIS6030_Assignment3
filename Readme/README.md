@@ -31,8 +31,7 @@
    should be
    removed from the dataset.
 
-3. This script is going to save the raw "Admission_Predict_trimmed.csv" file into the PostgresSQL server. You may run it
-   by
+3. This script is going to save the raw "Admission_Predict_trimmed.csv" file into the PostgresSQL server. You may run it by
    enter ```python Question1/q1_main.py``` inside the terminal.
 4. On the first three lines of the output, you may find out the general version information about the PostgresSQL server
    used:
@@ -215,7 +214,7 @@ means admission ACCEPTED. !!!**
     dataset. **(If the confusion matrix cannot properly display here, please find the original image at "
     ./Question3/confusion_matrix.png")**
 
-    <img src="Question3/confusion_matrix.png">
+    <img src="confusion_matrix.png">
 
     The confusion matrix indicates that for all 50 test cases
     * 47 cases are both "Predicted Accepted" and "Actually Accepted"
@@ -241,34 +240,14 @@ means admission ACCEPTED. !!!**
     ```
     The predicted admission rate with logistic regression is 0. It predict the admission status is Rejected.
     ```
-13. (Conner Case) When entering a group of relatively large feature value, the predicted admission rate may be over 1.
-    Take the following entered information(by which each feature value reach their maximum) as an example:
 
-    ```
-    Enter GRE score: (the value should be an integer between 0 to 340>? 340
-    Enter TOEFL score: (the value should be an integer between 0 to 120>? 120
-    Enter University Rating: (the value should be a float number between 0 to 5)>? 5
-    Enter the statement of purpose (the value should be a float number between 0 to 5)>? 5
-    Enter the letter of recommendation strength (the value should be a float number between 0 to 5)>? 5
-    Enter the undergraduate gpa (the value should be a float number between 0 to 10)>? 10
-    Enter the research experience (the value should be binary, either 0 or 1)>? 1
-    ```
-
-    In the above case, the script will round down the output to 1, and show the following information:
-    ```
-    The predicted admission rate with linear regression is 1.02. 
-    Since the predicted value is over 1, we will round it into 1, 
-    which means that this student is definitely accepted in admission with the prediction
-    ```
-
-14. Press 0 to exit the script.
+13. Press 0 to exit the script.
     ```
     Bye bye!
     Database disconnected.
     ```
-
+    
 ### Reference
-
 1. https://www.postgresqltutorial.com/postgresql-python/connect/
 2. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
 3. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html

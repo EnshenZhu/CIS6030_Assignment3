@@ -117,7 +117,14 @@ def user_prompt(reg_model, X_test, y_test):
             admission_predict = reg_model.predict(input_data)[0]
 
             print()
-            print("The predicted admission rate with linear regression is %.2f" % admission_predict)
+            if admission_predict <= 1:
+                print("The predicted admission rate with linear regression is %.2f" % admission_predict)
+            else:
+                print(
+                    "The predicted admission rate with linear regression is %.2f. Since the predicted value is over "
+                    "1, we will round it into 1, which means that this student is definitely accepted in admission "
+                    "with the prediction" %
+                    admission_predict)
             print()
 
 
@@ -139,10 +146,10 @@ def getData(cursor):
     return df
 
 
-def random_dataset_split(input):
+def random_dataset_split(raw_data):
     # RECALL: the column 0 of the original pd.DataFrame is the serial number. We should not put it into the training
-    X = input.iloc[:, 1:8]  # 注意左闭右开
-    y = input.iloc[:, 8]
+    X = raw_data.iloc[:, 1:8]  # 注意左闭右开
+    y = raw_data.iloc[:, 8]
 
     # We split the training and testing data with the ratio of 90% vs 10%,
     # and use the current time as the seed for the random splitting

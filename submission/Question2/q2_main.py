@@ -171,9 +171,9 @@ def multiple_variable_linear_regression(cursor):
     print("Multivariable Linear Regression training finished.")
     print("The coefficient of determination is around %.4f" % score_reg)
 
-    print("The linear regression model is y = %f*X0 + %f*X1 + %f*X2 + %f*X3 + %f*X4 + %f*X5 + %f*X6 + %f" % (
-        coef_reg[0], coef_reg[1], coef_reg[2], coef_reg[3], coef_reg[4], coef_reg[5], coef_reg[6], intercept_reg))
-
+    print("The linear regression model is admission_rate = %f * GRE_Score + %f * TOEFL_Score + %f * University_Rating"
+          " + %f * SOP + %f * LOR + %f * CGPA + %f * Research + %f" % (
+              coef_reg[0], coef_reg[1], coef_reg[2], coef_reg[3], coef_reg[4], coef_reg[5], coef_reg[6], intercept_reg))
     print()
 
     user_prompt(reg_model, X_test, y_test)  # add the interaction with the user

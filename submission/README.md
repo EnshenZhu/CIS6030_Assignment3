@@ -44,7 +44,7 @@
    ('PostgreSQL 15.0, compiled by Visual C++ build 1914, 64-bit',)
    ```
 6. (Add the SQL command) The following lines shows the fetch results for all the data inside the created **student**
-   table
+   table **(SELECT * from student;)**
    ```
    (1, 337, 118, 4, 4.5, 4.5, 9.65, 1, 0.92)
    (2, 324, 107, 4, 4.0, 4.5, 8.87, 1, 0.76)
@@ -55,11 +55,21 @@
    ......
    ```
    By which each row shows the **Serial No. | GRE Score | TOEFL Score | University Rating | SOP | LOR | CGPA | Research
-   |
-   Chance of Admit** in sequence
-7. (Optional) You may change to your own SQL command by changing the sql_command3 variable inside the view_table_content
+   | Chance of Admit** in sequence
+7. (Add the SQL command) The following lines shows the fetch results for all the data **which has the gre_score > 339
+   and toefl_score>115** inside the created **student** table **(SELECT * from student WHERE toefl_score >115 and
+   gre_score>339;)**
+   ```
+   (26, 340, 120, 5, 4.5, 4.5, 9.6, 1, 0.94)
+   (82, 340, 120, 4, 5.0, 5.0, 9.5, 1, 0.96)
+   (144, 340, 120, 4, 4.5, 4.0, 9.92, 1, 0.97)
+   (203, 340, 120, 5, 4.5, 4.5, 9.91, 1, 0.97)
+   ```
+   By which each row shows the **Serial No. | GRE Score | TOEFL Score | University Rating | SOP | LOR | CGPA | Research
+   | Chance of Admit** in sequence
+8. (Optional) You may change to your own SQL command by changing the sql_command3 variable inside the view_table_content
    function of the q1_main.py
-8. The final line of output ```Database disconnected.``` indicates that the database has been disconnected
+9. The final line of output ```Database disconnected.``` indicates that the database has been disconnected
    successfully.
 
 ****
@@ -81,8 +91,9 @@
    ```
    Besides, it will report the numerical model of the linear regression:
    ```
-   The linear regression model is y = 0.002127*X0 + 0.002555*X1 
-   + 0.007459*X2 + -0.000584*X3 + 0.018436*X4 + 0.114668*X5 + 0.027368*X6 + -1.310231
+   The linear regression model is admission_rate = 0.001945 * GRE_Score 
+   + 0.003002 * TOEFL_Score + 0.003507 * University_Rating + 0.000604 * SOP 
+   + 0.015263 * LOR + 0.120836 * CGPA + 0.023293 * Research + -1.329145
    ```
    It will also report the coefficient of determination:
    ```
@@ -160,7 +171,7 @@
     Since the predicted value is over 1, we will round it into 1, 
     which means that this student is definitely accepted in admission with the prediction
     ```
-    
+
 11. Press 0 to exit the script.
     ```
     Bye bye!

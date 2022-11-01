@@ -77,9 +77,16 @@ def save_csv_to_db(conn, cursor):
 
 
 def view_table_content(cursor):
-    """View the table contents"""
+    """View the all table contents"""
     sql_command3 = '''SELECT * from student;'''
     cursor.execute(sql_command3)
+    for i in cursor.fetchall():
+        print(i)
+
+    print()
+    """View the table contents which toefl_score >100"""
+    sql_command4 = '''SELECT * from student WHERE toefl_score >115 and gre_score>339;'''
+    cursor.execute(sql_command4)
     for i in cursor.fetchall():
         print(i)
 

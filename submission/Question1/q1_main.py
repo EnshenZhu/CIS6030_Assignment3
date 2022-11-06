@@ -1,5 +1,25 @@
 import psycopg2
-from set_env.configuration import config
+# from set_env.configuration import config
+
+from configparser import ConfigParser
+
+
+def config(filename='../env.ini', section='postgresql'):
+    # create a parser
+    parser = ConfigParser()
+    # read config file
+    parser.read(filename)
+
+    # get section, default to postgresql
+    db_profile = {}
+    if parser.has_section(section):
+        all_params = parser.items(section)
+        for single_param in all_params:
+            db_profile[single_param[0]] = single_param[1]
+    else:
+        raise Exception('Section {0} not found in the {1} file'.format(section, filename))
+
+    return db_profile
 
 
 def connection():
@@ -61,13 +81,14 @@ def save_csv_to_db(conn, cursor):
                     CGPA float,
                     Research int,
                     Chance_of_Admin float
-                    );'''
+                    );
+                    '''
 
     cursor.execute(sql_command1)
 
     # Execute the data insertion
     sql_command2 = '''COPY student(Serial_Num, GRE_Score, TOEFL_Score, University,SOP,LOR,CGPA,Research,Chance_of_Admin)
-                    FROM 'D:\Guelph_Master\CIS6030 Information System\CIS6030_Assignment\CIS6030_Assignment3\Question1\Admission_Predict_trimmed.csv'
+                    FROM 'D:\\Guelph_Master\\CIS6030 Information System\\CIS6030_Assignment\\CIS6030_Assignment3\\Question1\Admission_Predict_trimmed.csv'
                     DELIMITER ','
                     CSV HEADER;'''
 
